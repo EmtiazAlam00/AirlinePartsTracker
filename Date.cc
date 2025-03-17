@@ -68,7 +68,7 @@ int Date::toDays() const{
 	return days;
 }
 
-ostream& operator<<(ostream& out, Date& d){
+ostream& operator<<(ostream& out, const Date& d){
 	return out << d.getMonthName()<<" "<<d.getDay()<<", "<<d.getYear()<<endl;
 }
 

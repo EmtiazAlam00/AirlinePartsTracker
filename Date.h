@@ -10,7 +10,7 @@ using namespace std;
 
 class Date {
 
-	friend ostream& operator<<(ostream& out, Date&);
+	friend ostream& operator<<(ostream& out, const Date&);
 
 	public:
 		//constructor
