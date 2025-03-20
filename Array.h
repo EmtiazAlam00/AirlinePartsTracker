@@ -1,65 +1,103 @@
-
 #ifndef ARRAY_H
 #define ARRAY_H
 
 #include <iostream>
-#include <string>
-#include <iomanip>
 #include <cstdlib>
-#include "defs.h"
 
-using namespace std;
+const int MAX_ARR = 100; // Assuming MAX_ARR is defined in defs.h
 
-
+template <typename T>
 class Array {
+public:
+    // Constructor
+    Array();
+    
+    // Destructor
+    ~Array();
 
-	public:
-		//constructor
-		Array();
-				
-		//destructor
-		~Array();
-		
-		//other
-		void add(int);
-		int get(int index);
-		int getSize();
-		bool isFull();
-	
-	private:
-		int size;
-		int* elements;
-	
+    // Add an element
+    void add(T element);
+
+    // Overload [] operator
+    T& operator[](int index);
+    const T& operator[](int index) const;
+
+    // Get array size
+    int getSize() const;
+
+    // Check if full
+    bool isFull() const;
+
+    // Overload << operator
+    template <typename U>
+    friend std::ostream& operator<<(std::ostream& out, const Array<U>& arr);
+
+private:
+    int size;
+    T* elements;
 };
 
-Array::Array(){
-	elements = new int[MAX_ARR];
-	size = 0;
+// Constructor
+template <typename T>
+Array<T>::Array() {
+    elements = new T[MAX_ARR];
+    size = 0;
 }
 
-Array::~Array(){
-	delete [] elements;
+// Destructor
+template <typename T>
+Array<T>::~Array() {
+    delete[] elements;
 }
 
-void Array::add(int t){
-	if (size >= MAX_ARR)   return;
-  	elements[size++] = t;
+// Add an element to the array
+template <typename T>
+void Array<T>::add(T element) {
+    if (size >= MAX_ARR) return;
+    elements[size++] = element;
 }
 
-int Array::getSize(){
-	return size;
+// Overload [] operator for non-const objects
+template <typename T>
+T& Array<T>::operator[](int index) {
+    if (index < 0 || index >= size) {
+        std::cerr << "Array index out of bounds" << std::endl;
+        exit(1);
+    }
+    return elements[index];
 }
 
-bool Array::isFull(){
-	return size >= MAX_ARR;
+// Overload [] operator for const objects
+template <typename T>
+const T& Array<T>::operator[](int index) const {
+    if (index < 0 || index >= size) {
+        std::cerr << "Array index out of bounds" << std::endl;
+        exit(1);
+    }
+    return elements[index];
 }
 
-int Array::get(int index){
-	if (index < 0 || index >= size) {
-		cerr<<"Array index out of bounds"<<endl;
-		exit(1);
-	}
-	return elements[index];
+// Get array size
+template <typename T>
+int Array<T>::getSize() const {
+    return size;
+}
+
+// Check if full
+template <typename T>
+bool Array<T>::isFull() const {
+    return size >= MAX_ARR;
+}
+
+// Overload << operator
+template <typename U>
+std::ostream& operator<<(std::ostream& out, const Array<U>& arr) {
+    out << "[ ";
+    for (int i = 0; i < arr.size; i++) {
+        out << arr.elements[i] << " ";
+    }
+    out << "]";
+    return out;
 }
 
 #endif

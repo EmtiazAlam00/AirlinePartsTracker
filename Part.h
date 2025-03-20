@@ -3,30 +3,27 @@
 
 #include <iostream>
 #include <string>
-#include <iomanip>
 #include "Date.h"
 
-using namespace std;
-
-class Part{
-    public:
-    //Constructor
-    Part(const string& partName);
+class Part {
+public:
+    Part(const std::string& partName);
     virtual ~Part();
-    //getter
-    string getName() const;
-    //functions
+
+    std::string getName() const;
     void addFlightHours(int hours);
     void install(const Date& date);
-    friend ostream& operator<<(ostream& out, const Part& part);
-    //pure virtual function for inspection logic (to be implemented in derived classes)
-    virtual bool inspection(const Date& date) const = 0;
 
-    protected:
-    //member functions
-    string name;
+    virtual bool inspection(const Date& date) const = 0; // Pure virtual function
+
+    friend std::ostream& operator<<(std::ostream& out, const Part& part);
+
+protected: // Make protected so derived classes can access them
+    std::string name;
     Date installationDate;
     int flightHours;
-    virtual ostream& print(ostream& out) const;
+
+    virtual std::ostream& print(std::ostream& out) const;
 };
+
 #endif
