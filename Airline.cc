@@ -15,8 +15,8 @@ Airline::~Airline() {
     }
 }
 
-// Helper function: Get Aircraft by registration
-Aircraft* Airline::getAircraft(const  string& reg) const {
+//Get Aircraft by registration
+Aircraft* Airline::getAircraft(const string& reg) const {
     for (int i = 0; i < aircrafts.getSize(); i++) {
         if (aircrafts[i]->getRegistration() == reg) {
             return aircrafts[i];
@@ -25,7 +25,7 @@ Aircraft* Airline::getAircraft(const  string& reg) const {
     return nullptr;
 }
 
-// Helper function: Get Part by name
+//Get Part by name
 Part* Airline::getPart(const string& partName) const {
     for (int i = 0; i < parts.getSize(); i++) {
         if (parts[i]->getName() == partName) {

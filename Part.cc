@@ -1,13 +1,13 @@
 #include "Part.h"
 
 // Constructor
-Part::Part(const std::string& name) : name(name), flightHours(0) {}
+Part::Part(const string& name) : name(name), flightHours(0) {}
 
 // Virtual destructor
 Part::~Part() {}
 
 // Getter for the part name
-std::string Part::getName() const {
+string Part::getName() const {
     return name;
 }
 
@@ -19,17 +19,17 @@ void Part::addFlightHours(int hours) {
 }
 
 // Install the part on a given date
-void Part::install(const Date& date) { // Change to `const Date&`
+void Part::install(const Date& date) {
     installationDate = date;
 }
 
 // Overload << operator for dynamic binding
-std::ostream& operator<<(std::ostream& os, const Part& part) {
+ostream& operator<<(ostream& os, const Part& part) {
     return part.print(os);
 }
 
 // Virtual helper function for operator<<
-std::ostream& Part::print(std::ostream& out) const {
+ostream& Part::print(ostream& out) const {
     out << "Part Name: " << name << "\n"
         << "Installation Date: " << installationDate
         << "Flight Hours: " << flightHours << "\n";

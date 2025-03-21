@@ -1,15 +1,14 @@
 #include "Aircraft.h"
 
-#include <iostream>
 // Constructor
-Aircraft::Aircraft(const std::string& type, const std::string& registration)
+Aircraft::Aircraft(const string& type, const string& registration)
     : type(type), registration(registration), flighthours(0) {}
 
 // Destructor
 Aircraft::~Aircraft() {}
 
 // Getter for registration
-std::string Aircraft::getRegistration() const {
+string Aircraft::getRegistration() const {
     return registration;
 }
 
@@ -39,7 +38,7 @@ void Aircraft::inspectionReport(const Date& date, Array<Part*>& report) const {
 }
 
 // Overload << operator
-std::ostream& operator<<(std::ostream& out, const Aircraft& aircraft) {
+ostream& operator<<(ostream& out, const Aircraft& aircraft) {
     out << "Aircraft Type: " << aircraft.type << "\n";
     out << "Registration: " << aircraft.registration << "\n";
     out << "Flight Hours: " << aircraft.flighthours << "\n";

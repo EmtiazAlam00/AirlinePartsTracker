@@ -5,25 +5,32 @@
 #include <string>
 #include "Date.h"
 
-class Part {
-public:
-    Part(const std::string& partName);
-    virtual ~Part();
+using namespace std;
 
-    std::string getName() const;
+//Base class
+class Part {
+    public:
+    //Constructors
+    Part(const string& partName);
+    //Destructor
+    virtual ~Part();
+    //Getter
+    string getName() const;
+    //member functions
     void addFlightHours(int hours);
     void install(const Date& date);
+    // Pure virtual function
+    virtual bool inspection(const Date& date) const = 0;
+    //print function overload
+    friend ostream& operator<<(ostream& out, const Part& part);
 
-    virtual bool inspection(const Date& date) const = 0; // Pure virtual function
-
-    friend std::ostream& operator<<(std::ostream& out, const Part& part);
-
-protected: // Make protected so derived classes can access them
-    std::string name;
+    //protected so derived classes can access them
+    protected:
+    //member variables
+    string name;
     Date installationDate;
     int flightHours;
-
-    virtual std::ostream& print(std::ostream& out) const;
+    virtual ostream& print(ostream& out) const;
 };
 
 #endif

@@ -2,7 +2,7 @@
 #define AIRLINE_H
 
 #include <string>
-#include "Date.h"       // Added missing include
+#include "Date.h"       
 #include "Aircraft.h"
 #include "FH_Part.h"
 #include "IT_Part.h"
@@ -41,6 +41,7 @@ public:
     bool install(const string& reg, const string& partName, const Date& date);  // Changed Date& to const Date&
 
 private:
+    //member variables
     string name;
     Array<Aircraft*> aircrafts;
     Array<Part*> parts;
