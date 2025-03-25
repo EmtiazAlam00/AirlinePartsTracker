@@ -58,3 +58,9 @@ Implement a GUI for better visualization.
 Integrate with a database for persistent data storage.
 
 Extend with networking features to simulate real-time tracking.
+
+Sample Output:
+
+
+![image](https://github.com/user-attachments/assets/0a649d05-af93-4a85-b96e-587d2b06ae6a)
+
