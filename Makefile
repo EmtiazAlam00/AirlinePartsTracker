@@ -10,7 +10,11 @@ LDFLAGS =
 # Makefile settings - Can be customized.
 APPNAME = Airline
 EXT = .cc
-SRCDIR = C:\Users\emtia\Downloads\AirlinePartsTracker
+#For windows
+#SRCDIR = C:\Users\emtia\Downloads\AirlinePartsTracker
+
+#For macos
+SRCDIR = .
 OBJDIR = obj
 
 ############## Do not change anything from here downwards! #############

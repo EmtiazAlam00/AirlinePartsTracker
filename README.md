@@ -51,6 +51,10 @@ This project explores key software engineering principles:
 4. Record flight hours
 5. Generate an inspection report
 
+1.make
+2.Run program with `./Airline` to see the system in action.
+3. clean dependency files, make cleandep or make clean
+
 **Future Improvements**
 
 Implement a GUI for better visualization.
